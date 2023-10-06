@@ -148,31 +148,20 @@ sensor:
       filters:
           # Map from sensor -> measured value
           - calibrate_linear:
-            - 0.14 -> 2
-            - 0.31 -> 4
-            - 1.9 -> 12
-            - 3.30 -> 15
-            - 6.00 -> 17
-            - 7.10 -> 19.0
-            - 14.10 -> 37.00
-            - 17.68 -> 45.67
-            - 18.18 -> 46.00
-            - 20.64 -> 52.00
-            - 22.00 -> 55.33
-            - 25.15 -> 63
-            - 31.09 -> 77.50
-            - 54.70 -> 134.67
-            - 74.70 -> 183
-            - 193.19 -> 469
-            - 238.28 -> 578
-            - 275.93 -> 668.67
-            - 324.34 -> 785
-            - 352.02 -> 851.67
-            - 370.97 -> 896
-            - 618.31 -> 1487
-          # Make everything below 1W appear as just 0W.
+            - 0.0 -> 0.0
+            - 3.3 -> 14.8
+            - 7.1 -> 18.0
+            - 18 -> 45
+            - 22 -> 54
+            - 25 -> 62
+            - 54.70 -> 133
+            - 238 -> 577
+            - 324 -> 784
+            - 352 -> 850
+            - 618 -> 1486
+          # Make everything below 2W appear as just 0W.
           # Furthermore it corrects 1.14W for the power usage of the plug.
-          - lambda: if (x < (1 + 1.14)) return 0; else return (x - 1.14);
+          - lambda: if (x < (2 + 1.14)) return 0.0; else return (x - 1.14);
     voltage:
       name: "Voltage"
       unit_of_measurement: V
