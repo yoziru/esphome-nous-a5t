@@ -57,7 +57,7 @@ wifi:
     password: !secret wifi_ap_password
 
 logger:
-  level: INFO
+  # level: INFO
   # disable UART logging since we aren't connected to GPIO1 TX
   baud_rate: 0 
 
