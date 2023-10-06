@@ -142,7 +142,7 @@ sensor:
     power:
       name: "Power"
       unit_of_measurement: W
-      accuracy_decimals: 3
+      accuracy_decimals: 0
       id: "power"
       icon: mdi:lightning-bolt
       filters:
