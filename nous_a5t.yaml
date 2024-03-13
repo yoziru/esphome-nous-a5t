@@ -129,7 +129,6 @@ sensor:
               }
 
   - platform: cse7766
-    update_interval: 5s
     current:
       name: "Current"
       unit_of_measurement: A
