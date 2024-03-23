@@ -2,6 +2,7 @@ substitutions:
   friendly_name: "Nous A5T"
   device_name: "nous-a5t"
   device_description: Energy Monitoring Smart Power Strip with 3 controlled plugs and 3 USB ports
+  update_interval: 5s
 
 esphome:
   name: ${device_name}
@@ -138,7 +139,8 @@ sensor:
       filters:
       # Make everything below 0.01A appear as just 0A.
       # Furthermore it corrects 0.013A for the power usage of the plug.
-      - lambda: if (x < (0.01 + 0.013)) return 0; else return (x - 0.013);
+        - throttle_average: ${update_interval}
+        - lambda: if (x < (0.01 + 0.013)) return 0; else return (x - 0.013);
     power:
       name: "Power"
       unit_of_measurement: W
@@ -146,6 +148,7 @@ sensor:
       id: "power"
       icon: mdi:lightning-bolt
       filters:
+          - throttle_average: ${update_interval}
           # Map from sensor -> measured value
           - calibrate_linear:
             - 0.0 -> 0.0
@@ -168,6 +171,7 @@ sensor:
       accuracy_decimals: 1
       icon: mdi:sine-wave
       filters:
+        - throttle_average: ${update_interval}
         # Map from sensor -> measured value
         - calibrate_linear:
             - 0.0 -> 0.0
@@ -176,6 +180,8 @@ sensor:
       name: "Energy"
       unit_of_measurement: Wh
       icon: mdi:calendar-clock
+      filters:
+        - throttle: ${update_interval}
  
 light:
   - platform: status_led
