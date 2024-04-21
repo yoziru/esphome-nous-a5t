@@ -58,7 +58,7 @@ globals:
 
 binary_sensor:
   - platform: status
-    name: "${friendly_name} - Status"
+    name: "Status"
     device_class: connectivity
 
   - platform: gpio
@@ -75,7 +75,7 @@ binary_sensor:
 
 sensor:
   - platform: uptime
-    name: "${friendly_name} Uptime Sensor"
+    name: "Uptime Sensor"
 
   # Small buttons over ADC - see https://templates.blakadder.com/nous_A5T.html
   - platform: adc
@@ -106,25 +106,25 @@ sensor:
 
   - platform: cse7766
     current:
-      name: "${friendly_name} Current"
+      name: "Current"
       filters:
         - throttle: 10s
 
     voltage:
-      name: "${friendly_name} Voltage"
+      name: "Voltage"
       filters:
         - multiply: 2.4
         - throttle: 10s
 
     power:
-      name: "${friendly_name} Power"
+      name: "Power"
       id: power_sensor
       filters:
         - multiply: 2.4
         - throttle: 1s
 
     energy:
-      name: "${friendly_name} Energy"
+      name: "Energy"
       id: energy
       unit_of_measurement: kWh
       filters:
@@ -141,7 +141,7 @@ sensor:
               previous_energy_value = current_energy_value;
 
   - platform: template
-    name: "${friendly_name} Total Energy"
+    name: "Total Energy"
     unit_of_measurement: kWh
     device_class: "energy"
     state_class: "total_increasing"
@@ -153,7 +153,7 @@ sensor:
 
 light:
   - platform: status_led
-    name: "${friendly_name} Status LED"
+    name: "Status LED"
     id: blue_led
     disabled_by_default: true
     pin:
@@ -162,25 +162,25 @@ light:
 
 switch:
   - platform: gpio
-    name: "${friendly_name} - Switch 1"
+    name: "Switch 1"
     pin: GPIO14
     id: relay1
     restore_mode: ${relay_restore_mode}
 
   - platform: gpio
-    name: "${friendly_name} - Switch 2"
+    name: "Switch 2"
     pin: GPIO12
     id: relay2
     restore_mode: ${relay_restore_mode}
 
   - platform: gpio
-    name: "${friendly_name} - Switch 3"
+    name: "Switch 3"
     pin: GPIO13
     id: relay3
     restore_mode: ${relay_restore_mode}
 
   - platform: gpio
-    name: "${friendly_name} - USB Switch"
+    name: "USB Switch"
     pin: GPIO5
     inverted: True
     id: relay4
