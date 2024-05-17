@@ -1,8 +1,8 @@
 .DEFAULT_GOAL := help
 compile: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin  ## Read the configuration and compile the binary.
 
-.esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin: .venv/touchfile nous_a5t.yaml
-	. .venv/bin/activate; esphome compile nous_a5t.yaml
+.esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin: .venv/touchfile nous-a5t.yml
+	. .venv/bin/activate; esphome compile nous-a5t.yml
 
 compress: firmware.bin.gz ## Compress the binary.
 
@@ -10,7 +10,7 @@ firmware.bin.gz: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin
 	gzip -c .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin > firmware.bin.gz
 
 upload: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin ## Validate the configuration, create a binary, upload it, and start logs.
-	. .venv/bin/activate; esphome upload nous_a5t.yaml; esphome logs nous_a5t.yaml
+	. .venv/bin/activate; esphome upload nous-a5t.yml; esphome logs nous-a5t.yml
 
 deps: .venv/touchfile ## Create the virtual environment and install the requirements.
 
@@ -26,7 +26,7 @@ clean: ## Remove the virtual environment and the esphome build directory
 
 .PHONY: logs
 logs: ## Start logs.
-	. .venv/bin/activate; esphome logs nous_a5t.yaml
+	. .venv/bin/activate; esphome logs nous-a5t.yml
 
 .PHONY: help
 help: ## Show this help

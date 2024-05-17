@@ -1,0 +1,41 @@
+substitutions:
+  friendly_name: Nous A5T
+  device_name: nous-a5t
+  device_description: Energy Monitoring Smart Power Strip with 3 controlled plugs and 3 USB ports
+  relay_restore_mode: RESTORE_DEFAULT_OFF
+
+packages:
+  board: !include board.yml
+  text_sensor: !include text_sensor.yml
+  sensor: !include sensor.yml
+  switch: !include switch.yml
+  time: !include time.yml
+  
+esphome:
+  name: ${device_name}
+  name_add_mac_suffix: true
+  friendly_name: ${friendly_name}
+  comment: ${device_description}
+  project:
+    name: yoziru.esphome-nous-a5t
+    version: "2024.05.15"
+
+logger:
+  level: INFO
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "{device_name}-ap"
+    password: !secret wifi_hotspot_password
+
+captive_portal:

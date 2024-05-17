@@ -1,0 +1,5 @@
+packages:
+  base: !include packages/base.yml
+
+dashboard_import:
+  package_import_url: github://yoziru/esphome-nous-a5t/nous-a5t.yml@main

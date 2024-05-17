@@ -1,0 +1,25 @@
+switch:
+  - platform: gpio
+    name: "Switch 1"
+    pin: GPIO14
+    id: relay1
+    restore_mode: ${relay_restore_mode}
+
+  - platform: gpio
+    name: "Switch 2"
+    pin: GPIO12
+    id: relay2
+    restore_mode: ${relay_restore_mode}
+
+  - platform: gpio
+    name: "Switch 3"
+    pin: GPIO13
+    id: relay3
+    restore_mode: ${relay_restore_mode}
+
+  - platform: gpio
+    name: "USB Switch"
+    pin: GPIO5
+    inverted: True
+    id: relay4
+    restore_mode: ${relay_restore_mode}

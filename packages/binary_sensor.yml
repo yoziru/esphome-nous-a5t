@@ -1,0 +1,16 @@
+binary_sensor:
+  - platform: status
+    name: "Status"
+    device_class: connectivity
+
+  - platform: gpio
+    pin:
+      number: GPIO16
+      # mode: INPUT_PULLUP
+      inverted: True
+    id: "button_state0"
+    on_press:
+      - switch.turn_off: relay1
+      - switch.turn_off: relay2
+      - switch.turn_off: relay3
+      - switch.turn_off: relay4
