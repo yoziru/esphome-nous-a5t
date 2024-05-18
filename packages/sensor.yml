@@ -50,18 +50,21 @@ sensor:
   - platform: cse7766
     current:
       name: "Current"
+      accuracy_decimals: 0
       filters:
+        - multiply: 2.4
         - throttle: 10s
 
     voltage:
       name: "Voltage"
+      accuracy_decimals: 0
       filters:
         - multiply: 2.4
         - throttle: 10s
 
     power:
       name: "Power"
-      id: power_sensor
+      accuracy_decimals: 0
       filters:
         - multiply: 2.4
         - throttle: 1s
