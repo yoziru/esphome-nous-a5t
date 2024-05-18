@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 compile: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin  ## Read the configuration and compile the binary.
 
-.esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin: .venv/touchfile nous-a5t.yml
+.esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin: .venv/touchfile nous-a5t.yml packages/*.yml
 	. .venv/bin/activate; esphome compile nous-a5t.yml
 
 compress: firmware.bin.gz ## Compress the binary.
