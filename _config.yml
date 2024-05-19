@@ -1,0 +1,4 @@
+# CHANGEME: Set these variable to your liking
+title: ESPHome Nous A5T
+description: ESPHome firmware for the Nous A5T WiFi power strip with energy monitoring.
+theme: jekyll-theme-hacker
