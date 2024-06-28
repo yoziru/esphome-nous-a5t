@@ -18,7 +18,7 @@ esphome:
   comment: ${device_description}
   project:
     name: yoziru.esphome-nous-a5t
-    version: "2024.05.19"
+    version: "2024.06.28"
 
 logger:
   level: INFO
