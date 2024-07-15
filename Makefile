@@ -1,16 +1,24 @@
 .DEFAULT_GOAL := help
-compile: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin  ## Read the configuration and compile the binary.
+PROJECT := nous-a5t
+TARGET := $(PROJECT).yml
+HOST_SUFFIX := ""
 
-.esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin: .venv/touchfile nous-a5t.yml packages/*.yml
-	. .venv/bin/activate; esphome compile nous-a5t.yml
+compile: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin  ## Read the configuration and compile the binary.
+
+.esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin: .venv/touchfile $(PROJECT).yml packages/*.yml
+	. .venv/bin/activate; esphome compile $(PROJECT).yml
 
 compress: firmware.bin.gz ## Compress the binary.
 
-firmware.bin.gz: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin
-	gzip -c .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin > firmware.bin.gz
+firmware.bin.gz: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin
+	gzip -c .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin > firmware.bin.gz
 
-upload: .esphome/build/nous-a5t/.pioenvs/nous-a5t/firmware.bin ## Validate the configuration, create a binary, upload it, and start logs.
-	. .venv/bin/activate; esphome upload nous-a5t.yml; esphome logs nous-a5t.yml
+upload: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin ## Validate the configuration, create a binary, upload it, and start logs.
+	if if [ $(HOST_SUFFIX) = "" ]; then \
+		. .venv/bin/activate; esphome upload $(PROJECT).yml; esphome logs $(PROJECT).yml; \
+	else \
+		. .venv/bin/activate; esphome upload $(PROJECT).yml  --device $(PROJECT)$(HOST_SUFFIX); esphome logs $(PROJECT).yml  --device $(PROJECT)$(HOST_SUFFIX); \
+	fi
 
 deps: .venv/touchfile ## Create the virtual environment and install the requirements.
 
@@ -26,7 +34,11 @@ clean: ## Remove the virtual environment and the esphome build directory
 
 .PHONY: logs
 logs: ## Start logs.
-	. .venv/bin/activate; esphome logs nous-a5t.yml
+	if [ $(HOST_SUFFIX) = "" ]; then \
+		. .venv/bin/activate; esphome logs $(PROJECT).yml; \
+	else \
+		. .venv/bin/activate; esphome logs $(PROJECT).yml  --device $(PROJECT)$(HOST_SUFFIX); \
+	fi
 
 .PHONY: help
 help: ## Show this help
