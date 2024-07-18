@@ -1,21 +1,19 @@
 {
   "name": "ESPHome Nous A5T",
-  "version": "",
+  "version": "2024.7.18",
   "home_assistant_domain": "esphome",
   "new_install_skip_erase": false,
-  "builds": [
-    {
-      "chipFamily": "ESP8266",
-      "ota": {
-        "path": "nous-a5t-esp8266/nous-a5t-esp8266.ota.bin",
-        "md5": "eb626a04a8eaa0c1862b1c72160a6c2d"
-      },
-      "parts": [
-        {
-          "path": "nous-a5t-esp8266/nous-a5t-esp8266.factory.bin",
-          "offset": 0
-        }
-      ]
-    }
-  ]
+  "builds": {
+    "chipFamily": "ESP8266",
+    "ota": {
+      "path": "nous-a5t-esp8266/nous-a5t-esp8266.ota.bin",
+      "md5": "34f37ab65cb24dd7a0dfcc292ba18abf"
+    },
+    "parts": [
+      {
+        "path": "nous-a5t-esp8266/nous-a5t-esp8266.factory.bin",
+        "offset": 0
+      }
+    ]
+  }
 }
