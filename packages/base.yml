@@ -6,10 +6,9 @@ substitutions:
 
 packages:
   board: !include board.yml
-  text_sensor: !include text_sensor.yml
+  common: !include common.yml
   sensor: !include sensor.yml
   switch: !include switch.yml
-  time: !include time.yml
   
 esphome:
   name: ${device_name}
@@ -18,7 +17,7 @@ esphome:
   comment: ${device_description}
   project:
     name: yoziru.esphome-nous-a5t
-    version: "2024.7.18"
+    version: "2024.8.0"
 
 logger:
   level: INFO

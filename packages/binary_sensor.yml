@@ -1,8 +1,4 @@
 binary_sensor:
-  - platform: status
-    name: "Status"
-    device_class: connectivity
-
   - platform: gpio
     pin:
       number: GPIO16

@@ -14,7 +14,7 @@ firmware.bin.gz: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin
 	gzip -c .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin > firmware.bin.gz
 
 upload: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin ## Validate the configuration, create a binary, upload it, and start logs.
-	if if [ $(HOST_SUFFIX) = "" ]; then \
+	if [ $(HOST_SUFFIX) = "" ]; then \
 		. .venv/bin/activate; esphome upload $(PROJECT).yml; esphome logs $(PROJECT).yml; \
 	else \
 		. .venv/bin/activate; esphome upload $(PROJECT).yml  --device $(PROJECT)$(HOST_SUFFIX); esphome logs $(PROJECT).yml  --device $(PROJECT)$(HOST_SUFFIX); \
