@@ -9,7 +9,7 @@ packages:
   common: !include common.yml
   sensor: !include sensor.yml
   switch: !include switch.yml
-  
+
 esphome:
   name: ${device_name}
   name_add_mac_suffix: true
@@ -17,7 +17,7 @@ esphome:
   comment: ${device_description}
   project:
     name: yoziru.esphome-nous-a5t
-    version: "2024.8.0"
+    version: "2025.7.24"
 
 logger:
   level: INFO
