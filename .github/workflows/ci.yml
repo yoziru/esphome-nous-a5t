@@ -3,7 +3,6 @@ name: CI
 on:
   pull_request:
 
-
 jobs:
   ci:
     name: Building ${{ matrix.file }}
@@ -14,7 +13,7 @@ jobs:
         file:
           - nous-a5t.yml
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.2
       - name: Mock secrets.yaml from example
         run: cp secrets.yaml.example secrets.yaml
       - name: Get ESPHome version
