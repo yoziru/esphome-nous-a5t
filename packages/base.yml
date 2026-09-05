@@ -7,6 +7,7 @@ substitutions:
 packages:
   board: !include board.yml
   common: !include common.yml
+  project: !include project.yml
   sensor: !include sensor.yml
   switch: !include switch.yml
 
@@ -15,9 +16,6 @@ esphome:
   name_add_mac_suffix: true
   friendly_name: ${friendly_name}
   comment: ${device_description}
-  project:
-    name: yoziru.esphome-nous-a5t
-    version: "2025.7.24"
 
 logger:
   level: INFO
@@ -27,8 +25,8 @@ api:
     key: !secret api_encryption_key
 
 ota:
-  platform: esphome
-  password: !secret ota_password
+  - platform: esphome
+    password: !secret ota_password
 
 wifi:
   ssid: !secret wifi_ssid
