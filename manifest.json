@@ -1,6 +1,6 @@
 {
   "name": "ESPHome Nous A5T",
-  "version": "2025.7.24",
+  "version": "2026.8.2",
   "home_assistant_domain": "esphome",
   "new_install_skip_erase": false,
   "builds": [
@@ -8,7 +8,7 @@
       "chipFamily": "ESP8266",
       "ota": {
         "path": "nous-a5t-esp8266.ota.bin",
-        "md5": "6dbdf70e4d433fbe4291e62518fa95c2"
+        "md5": "a388829804ca16039c5c7915eed60639"
       },
       "parts": [
         {
