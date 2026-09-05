@@ -2,7 +2,6 @@
 substitutions:
   name: nous-a5t-dashboard-test
   friendly_name: Nous A5T Dashboard Test
-  relay_restore_mode: RESTORE_DEFAULT_OFF
   ota_password: !secret test_ota_password
 
 packages:
