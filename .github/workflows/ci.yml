@@ -12,6 +12,9 @@ jobs:
       matrix:
         file:
           - nous-a5t.yml
+          # Mirrors the YAML ESPHome Device Builder materializes for an
+          # adopted device; guards the primary installation path.
+          - tests/dashboard_config.yml
     steps:
       - uses: actions/checkout@v4.2.2
       - name: Mock secrets.yaml from example
