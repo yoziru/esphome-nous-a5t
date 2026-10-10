@@ -84,8 +84,26 @@ jobs:
           path: output
       - name: Create single manifest.json
         run: |
+          set -euo pipefail
           version=$(cat output/project_version)
-          jq -s --arg version "$version" '{"name": "${{ inputs.name }}", "version": $version, "home_assistant_domain": "esphome", "new_install_skip_erase": false, "builds":.}' output/*/manifest.json > output/${{ inputs.manifest_filename }}
+          # Each build's manifest has binary paths relative to its own
+          # directory, but the merged manifest lives at the site root. Prefix
+          # them with the build directory, or ESP Web Tools requests
+          # /<file>.bin instead of /<build-dir>/<file>.bin and gets a 404.
+          for dir in output/*/; do
+            build_name=$(basename "$dir")
+            jq --arg n "$build_name" '
+              (if .ota? and .ota.path? then .ota.path |= ($n + "/" + .) else . end)
+              | (if .parts? then .parts |= map(.path |= ($n + "/" + .)) else . end)
+            ' "$dir/manifest.json" > "$dir/manifest.prefixed.json"
+          done
+          jq -s --arg version "$version" '{"name": "${{ inputs.name }}", "version": $version, "home_assistant_domain": "esphome", "new_install_skip_erase": false, "builds":.}' output/*/manifest.prefixed.json > output/${{ inputs.manifest_filename }}
+          # Intermediate files must not be published.
+          rm -f output/*/manifest.prefixed.json
+          # Every referenced binary must exist, or the install button 404s.
+          jq -r '.builds[] | .ota.path?, .parts[]?.path' output/${{ inputs.manifest_filename }} | while read -r path; do
+            test -f "output/$path" || { echo "Manifest references missing file: $path"; exit 1; }
+          done
 
       - run: cp -R static/* output
 
