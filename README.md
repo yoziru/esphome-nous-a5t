@@ -6,10 +6,8 @@ ESPHome features:
 
 - ESP8266 based
 - [CSE7766 Power Sensor](https://esphome.io/components/sensor/cse7766.html)
-- Captive portal for WiFi configuration (AP: Nous A5T - Access Point)
-  - default password = `esphome`
+- Captive portal for WiFi configuration: the fallback access point is named after the device (e.g. `nous-a5t-a1b2c3`) and uses the `wifi_hotspot_password` secret
 - OTA updates
-- Web server
 - Home Assistant integration through [native API](https://esphome.io/components/api.html)
 
 ## Installation
@@ -79,13 +77,7 @@ Secret names are local to each user's dashboard. If yours differ, keep `ota_pass
 
 By default this device comes with Tasmota firmware. To flash ESPHome, follow these steps:
 
-1. Create a `secrets.yaml` file based on the `secrets.yaml.example` file and fill in your WiFi credentials.
-
-```yaml
-wifi_ssid: "your-wifi-ssid"
-wifi_password: "your-wifi-password"
-wifi_ap_password: "esphome"
-```
+1. Create a `secrets.yaml` file based on the `secrets.yaml.example` file and fill in all values: Wi-Fi credentials, fallback AP password, OTA password, and API encryption key.
 
 2. Run `make compress` to compile the firmware and compress it using gzip.
 
