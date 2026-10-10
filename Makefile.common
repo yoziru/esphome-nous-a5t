@@ -33,6 +33,9 @@ validate-dashboard-config: check-uv ## Validate the generated-style ESPHome Devi
 	$(UV_CHECK)
 	uvx --with pip esphome==$(ESPHOME_VERSION) compile $(TARGET)
 
+compress: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin ## Build the firmware and compress it for Tasmota OTA upload
+	gzip -9 -c $< > firmware.bin.gz
+
 upload: .esphome/build/$(PROJECT)/.pioenvs/$(PROJECT)/firmware.bin check-uv ## Validate the configuration, create a binary, upload it, and start logs.
 	@suffix="$(HOST_SUFFIX)"; \
 	if [ -z "$$suffix" ] && [ -f .selected_suffix ]; then \
