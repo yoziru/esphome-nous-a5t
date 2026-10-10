@@ -2,14 +2,9 @@ substitutions:
   friendly_name: Nous A5T
   device_name: nous-a5t
   device_description: Energy Monitoring Smart Power Strip with 3 controlled plugs and 3 USB ports
-  relay_restore_mode: RESTORE_DEFAULT_OFF
 
 packages:
-  board: !include board.yml
-  common: !include common.yml
-  project: !include project.yml
-  sensor: !include sensor.yml
-  switch: !include switch.yml
+  device: !include device.yml
 
 esphome:
   name: ${device_name}

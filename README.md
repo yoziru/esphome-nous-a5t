@@ -99,6 +99,11 @@ wifi_ap_password: "esphome"
 
 The device will reboot and connect to your WiFi network, and should be auto-detected in Home Assistant.
 
+## Physical buttons
+
+- The master button switches all four relays off.
+- The three outlet buttons are not supported: they share the ADC pin through a resistor ladder that is unreliable to read (see the [blakadder template](https://templates.blakadder.com/nous_A5T.html) for details). Control the plugs from Home Assistant instead.
+
 ## Screenshots
 
 ![ESPHome Screenshot](./nous-a5t-esphome.png)
