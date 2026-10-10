@@ -2,7 +2,7 @@
   "chipFamily": "ESP8266",
   "ota": {
     "path": "nous-a5t-esp8266.ota.bin",
-    "md5": "c55f7fb8088036d25924e707ca11ae92"
+    "md5": "cbaac8eeb700f4f91126b6f96476219b"
   },
   "parts": [
     {
