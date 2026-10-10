@@ -5,33 +5,6 @@ globals:
     initial_value: '0.0'
 
 sensor:
-  # Small buttons over ADC - see https://templates.blakadder.com/nous_A5T.html
-  - platform: adc
-    pin: VCC
-    id: a0_vcc
-    update_interval: 1s
-    internal: true
-    filters:
-      - clamp:
-          min_value: 0
-          max_value: 4
-          ignore_out_of_range: true
-      - timeout:
-          timeout: 1s
-          value: 4
-    on_value_range:
-      - below: 1.5
-        then:
-          - switch.toggle: relay3
-      - above: 1.5
-        below: 2.5
-        then:
-          - switch.toggle: relay2
-      - above: 2.5
-        below: 3.5
-        then:
-          - switch.toggle: relay1
-
   - platform: cse7766
     current:
       name: "Current"

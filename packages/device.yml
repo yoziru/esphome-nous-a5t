@@ -1,0 +1,14 @@
+# Shared package list for both entry points: the CLI root config
+# (nous-a5t.yml -> base.yml) and the ESPHome Device Builder import
+# (nous-a5t.dashboard.yml -> dashboard.yml). Add packages here so the two
+# installation paths cannot drift.
+substitutions:
+  relay_restore_mode: RESTORE_DEFAULT_OFF
+
+packages:
+  board: !include board.yml
+  binary_sensor: !include binary_sensor.yml
+  common: !include common.yml
+  project: !include project.yml
+  sensor: !include sensor.yml
+  switch: !include switch.yml

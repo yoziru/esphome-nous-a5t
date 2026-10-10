@@ -1,3 +1,6 @@
+# Physical master button: switches all four relays off. GPIO16 does not
+# support interrupts on the ESP8266, so ESPHome polls this pin (a warning is
+# logged at boot).
 binary_sensor:
   - platform: gpio
     pin:
