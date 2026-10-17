@@ -1,0 +1,25 @@
+debug: {}
+
+text_sensor:
+  - platform: debug
+    reset_reason:
+      name: "Reset Reason"
+      entity_category: diagnostic
+
+sensor:
+  - platform: debug
+    loop_time:
+      name: "Loop Time"
+      entity_category: diagnostic
+    free:
+      name: "Free Memory"
+      entity_category: diagnostic
+      disabled_by_default: true
+    block:
+      name: "Largest Free Block"
+      entity_category: diagnostic
+      disabled_by_default: true
+    fragmentation:
+      name: "Fragmentation"
+      entity_category: diagnostic
+      disabled_by_default: true

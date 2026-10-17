@@ -9,6 +9,9 @@ packages:
   board: !include board.yml
   binary_sensor: !include binary_sensor.yml
   common: !include common.yml
+  # Classifies the next unexpected reset (power-on, hardware watchdog,
+  # exception) and catches loop starvation via loop_time.
+  debug: !include debug.yml
   project: !include project.yml
   sensor: !include sensor.yml
   switch: !include switch.yml

@@ -91,6 +91,10 @@ By default this device comes with Tasmota firmware. To flash ESPHome, follow the
 
 The device will reboot and connect to your WiFi network, and should be auto-detected in Home Assistant.
 
+## Diagnostics
+
+The debug entities appear under the device in Home Assistant (Configuration → Devices & Services → ESPHome → your device → Diagnostic). **Reset Reason** classifies the previous boot: a `Hardware Watchdog` reason together with a flat **Loop Time** suggests a supply/brownout issue (for example while switching relays), while large **Loop Time** spikes suggest blocking code. **Free Memory**, **Largest Free Block**, and **Fragmentation** are disabled by default; enable them temporarily when investigating.
+
 ## Physical buttons
 
 - The master button switches all four relays off.
