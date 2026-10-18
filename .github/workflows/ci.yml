@@ -16,7 +16,7 @@ jobs:
           # adopted device; guards the primary installation path.
           - tests/dashboard_config.yml
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v7.0.1
       - name: Mock secrets.yaml from example
         run: cp secrets.yaml.example secrets.yaml
       - name: Get ESPHome version
