@@ -2,12 +2,15 @@
   "chipFamily": "ESP8266",
   "ota": {
     "path": "nous-a5t-esp8266.ota.bin",
-    "md5": "a9a1b02a17cc8758034c7726198ea7ce"
+    "md5": "a4ae712fb9aaa4d53d7b8514eab4c6d1",
+    "sha256": "a579fa26e4b02be0e9536f9e9fb0a1b8a353ba7c3afec16e00f7db0741bfdfe9"
   },
   "parts": [
     {
       "path": "nous-a5t-esp8266.factory.bin",
-      "offset": 0
+      "offset": 0,
+      "md5": "a4ae712fb9aaa4d53d7b8514eab4c6d1",
+      "sha256": "a579fa26e4b02be0e9536f9e9fb0a1b8a353ba7c3afec16e00f7db0741bfdfe9"
     }
   ]
 }
